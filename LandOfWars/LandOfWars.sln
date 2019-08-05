@@ -18,6 +18,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07.Presentation", "07.Presentation", "{CE638E6C-DF17-41A9-A34F-01AC4E20555B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08.Realtime", "08.Realtime", "{D0E3178A-A5A6-4F65-89B0-85585FF29B82}"
+	ProjectSection(SolutionItems) = preProject
+		realtime.js = realtime.js
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09.Server", "09.Server", "{A389C93B-3D76-4B53-AA2B-D4084A4DF052}"
 EndProject
