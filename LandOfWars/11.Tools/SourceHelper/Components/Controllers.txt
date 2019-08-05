@@ -1,0 +1,45 @@
+﻿using PA.API.Models.{ControllerName};
+using PA;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace PA.API.Controllers
+{
+    public class {ControllerName}Controller : PAController
+    {
+        [HttpPost]
+		[PAPermission(PermissionType.Admin)]
+        public ActionResult Search({ControllerName}SearchAction ActionCmd)
+        {
+            return JsonExpando(ActionCmd.Execute(CurrentObjectContext));
+        }
+        [HttpPost]
+		[PAPermission(PermissionType.Admin)]
+        public ActionResult GetById({ControllerName}GetByIdAction ActionCmd)
+        {
+            return JsonExpando(ActionCmd.Execute(CurrentObjectContext));
+        }
+        [HttpPost]
+		[PAPermission(PermissionType.Admin)]
+        public ActionResult UpdateById({ControllerName}UpdateByIdAction ActionCmd)
+        {
+            return JsonExpando(ActionCmd.Execute(CurrentObjectContext));
+        }
+        [HttpPost]
+		[PAPermission(PermissionType.Admin)]
+        public ActionResult DeleteById({ControllerName}DeleteByIdAction ActionCmd)
+        {
+            return JsonExpando(ActionCmd.Execute(CurrentObjectContext));
+        }
+        [HttpPost]
+		[PAPermission(PermissionType.Admin)]
+        public ActionResult Insert({ControllerName}InsertAction ActionCmd)
+        {
+            return JsonExpando(ActionCmd.Execute(CurrentObjectContext));
+        }
+
+    }
+}

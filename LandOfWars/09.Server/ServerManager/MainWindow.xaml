@@ -1,0 +1,29 @@
+﻿<Window x:Class="ServerManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServerManager"
+        mc:Ignorable="d"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded"
+        Title="Server Manager by Nguyen Hoang Duy" Height="211.143" Width="707.707">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="163">
+            <Label Content="Login Server" HorizontalContentAlignment="Center"/>
+        </Border>
+        <local:ToggleButton MouseUp="ToggleButton_LoginServer" HorizontalAlignment="Left" Height="30" Margin="178,10,0,0" VerticalAlignment="Top" Width="53"/>
+        <RichTextBox IsEnabled="False" Name="rtb" HorizontalAlignment="Left" Height="127" Margin="280,10,0,0" VerticalAlignment="Top" Width="403">
+            <FlowDocument>
+                <Paragraph>
+                    <Run/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="29" Margin="10,45,0,0" VerticalAlignment="Top" Width="163">
+            <Label Content="Login Server" HorizontalContentAlignment="Center"/>
+        </Border>
+        <local:ToggleButton MouseUp="ToggleButton_LoginServer" HorizontalAlignment="Left" Height="30" Margin="178,45,0,0" VerticalAlignment="Top" Width="53"/>
+    </Grid>
+</Window>

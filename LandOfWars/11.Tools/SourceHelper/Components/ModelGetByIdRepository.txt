@@ -1,0 +1,35 @@
+﻿using PA;
+using PA.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace PA.Repository
+{
+    public class {ControllerName}GetByIdRepository<T> : CommandBase<T> where T : class,new()
+    {
+        public {TypeID} {ID} { get; set; }
+        protected override void ValidateCore(ObjectContext context)
+        {
+           if(this.{ID} == null)
+            {
+                throw new BusinessException("{ID} is not nullable", System.Net.HttpStatusCode.BadRequest);
+            }
+        }
+        private T GetData(ObjectContext context)
+        {
+            return context.db
+                .From("{DefaultControllerName}")
+                .Where("{DefaultControllerName}.{ID}",this.{ID})
+{LeftJoin}
+                .Result<T>()
+                .FirstOrDefault()
+                ;
+        }
+        protected override Result<T> ExecuteCore(ObjectContext context)
+        {
+            return Success(this.GetData(context));
+        }
+    }
+}

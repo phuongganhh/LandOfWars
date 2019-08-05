@@ -1,0 +1,60 @@
+﻿using LF.Entity;
+using LF.Framework;
+using LF.Infra;
+using LF.Infra.Common.Infrastructure;
+using LF.Infra.CommonMgt;
+using LF.Repository;
+using LF.Repository.GridConfigMgt;
+using System;
+
+namespace LF.Business.GridConfigMgt
+{
+    [
+        {DefaultDataTypeAttr}
+    ]
+    public class GridConfigDefaultDataInsertBusiness : CommandBase, IDefaultDataInsertBusiness
+    {
+        private static readonly Guid id = new Guid("737e0bac-09fe-41e7-9241-f8ebfb346d91");
+        private static readonly string name = nameof(GridConfig);
+        public Guid Id => id;
+        public string Name => name;
+
+        public long MerchantId { get; set; }
+        public long TypeId { get; set; }
+        public string TypeName { get; set; }
+
+        protected override Result ExecuteCore(ObjectContext context)
+        {
+            var isGenerated = IsGenerated(context);
+            if (!isGenerated)
+            {
+                var data = GridConfigDefault.GetAll(new GridConfigDefaultRequest { MerchantId = this.MerchantId, TypeId = this.TypeId });
+
+                data.vnForEach(dto =>
+                {
+                    using (var cmd = new GridConfigAdminDetailInsertRepository
+                    {
+                        GridConfig = dto
+                    })
+                    {
+                        cmd.Execute(context);
+                    }
+                });
+            }
+            return Success();
+        }
+
+        public bool IsGenerated(ObjectContext context)
+        {
+            using (var cmd = new GridConfigCheckExistRepository
+            {
+                MerchantId = MerchantId,
+                TypeId = TypeId
+            })
+            {
+                var isEmpty = cmd.Execute(context).ThrowIfFail("CheckEmpty").Data;
+                return !isEmpty;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+﻿===========Then, at the bottom of your _Layout.cshtml PAge:
+
+@foreach (var script in Html.ScriptManager().scriptFiles.Distinct())
+{
+    @Html.Script(script);
+}
+@foreach (var script in Html.ScriptManager().scripts)
+{
+    @Html.Raw("<script type='text/javascript'>")
+    @Html.Raw(script)
+    @Html.Raw("</script>")
+}
+
+============= Finally, you use it in a PArtial view like:
+@{
+  Html.ScriptManager().scriptFiles.Add(Url.Content("~/Scripts/jquery.blockUI.js"));
+ }
